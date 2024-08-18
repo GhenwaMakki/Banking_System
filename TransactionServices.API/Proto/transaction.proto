@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option csharp_namespace = "TransactionService.Protos";
+
+package transactions;
+
+service TransactionService {
+  rpc CreateTransaction (CreateTransactionRequest) returns (CreateTransactionResponse);
+  rpc GetTransaction (GetTransactionRequest) returns (GetTransactionResponse);
+  rpc CreateRecurrentTransaction (CreateRecurrentTransactionRequest) returns (CreateRecurrentTransactionResponse);
+}
+
+message CreateTransactionRequest {
+  string account_number = 1;
+  double amount = 2;
+}
+
+message CreateTransactionResponse {
+  string transaction_id = 1;
+}
+
+message GetTransactionRequest {
+  string transaction_id = 1;
+}
+
+message GetTransactionResponse {
+  string transaction_id = 1;
+  string account_number = 2;
+  double amount = 3;
+  string transaction_date = 4;
+}
+
+
+message CreateRecurrentTransactionRequest {
+  string account_number = 1;
+  double amount = 2;
+  string recurrence_pattern = 3; 
+}
+
+message CreateRecurrentTransactionResponse {
+  string recurrent_transaction_id = 1;
+}

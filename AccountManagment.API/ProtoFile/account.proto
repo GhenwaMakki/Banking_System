@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package account;
+
+service AccountService {
+  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse);
+  rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse);
+}
+
+message GetAccountRequest {
+  int64 account_id = 1;
+}
+
+message GetAccountResponse {
+  int64 id = 1;
+  string account_number = 2;
+  double balance = 3;
+  int64 user_id = 4;
+}
+
+message CreateAccountRequest {
+  string account_number = 1;
+  double balance = 2;
+  int64 user_id = 3;
+}
+
+message CreateAccountResponse {
+  int64 id = 1;
+}

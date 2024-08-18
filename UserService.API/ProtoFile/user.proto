@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option csharp_namespace = "UserService.Proto";
+
+service UserService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUsersByBranch(GetUsersByBranchRequest) returns (GetUsersByBranchResponse);
+}
+
+message GetUserRequest {
+  int64 userId = 1;
+}
+
+message GetUserResponse {
+  int64 id = 1;
+  string username = 2;
+  string firstName = 3;
+  string lastName = 4;
+  string email = 5;
+  string role = 6;
+  int64 branchId = 7;
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
+  string role = 5;
+  int64 branchId = 6;
+}
+
+message CreateUserResponse {
+  int64 userId = 1;
+}
+
+message GetUsersByBranchRequest {
+  int64 branchId = 1;
+}
+
+message GetUsersByBranchResponse {
+  repeated GetUserResponse users = 1;
+}
